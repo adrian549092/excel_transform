@@ -1,0 +1,4 @@
+click~=7.1.2
+humanfriendly~=9.1
+openpyxl~=3.0.6
+pandas~=1.2.2
