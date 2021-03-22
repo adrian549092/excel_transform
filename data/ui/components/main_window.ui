@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QDialog" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1145</width>
+    <height>763</height>
+   </rect>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Excel Transform</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>1111</width>
+     <height>721</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>601</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0" colspan="2">
+      <widget class="QListWidget" name="select_source_files_view">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QPushButton" name="select_source_files_button">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>Select Source Files</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Source Files</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>638</x>
+      <y>90</y>
+      <width>451</width>
+      <height>108</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QListWidget" name="select_mapping_file_view">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="select_mapping_file_button">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>Select Mapping File</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="process_files_button">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>550</y>
+      <width>251</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Process Files</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>60</y>
+      <width>189</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Mapping File</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>210</y>
+      <width>189</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Destination File</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>240</y>
+      <width>451</width>
+      <height>108</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0" rowspan="2">
+      <widget class="QListWidget" name="select_dest_file_view">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="select_dest_file_button">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>Select Dest File     </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>10</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Excel Transform</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>479</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>System Messages</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>510</y>
+      <width>591</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QListWidget" name="message_view">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="clear_messages_button">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>Clear Messages</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

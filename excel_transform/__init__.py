@@ -10,7 +10,8 @@ import click
 import humanfriendly
 import pandas
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
+
 
 logger = logging.getLogger()
 
@@ -85,14 +86,19 @@ def process_mappings(source_df_dict, mappings):
 @click.argument('source', nargs=-1)
 @click.argument('mapping')
 @click.option('-o', '--output', help='relative or absolute path to output file')
+@click.option('--individual', help='performs processing on an individual file basis', is_flag=True)
 @click.pass_context
 def transform(ctx, **kwargs):
+    transform_spreadsheets(**kwargs)
+
+
+def transform_spreadsheets(source, mapping, output):
     """Produces a new spreadsheet with transformation mapping applied"""
     s_time = datetime.now()
     try:
-        source_paths = [get_path(x) for x in kwargs.get('source')]
-        mapping_path = get_path(kwargs.get('mapping'), make_dir=False)
-        output_path = get_path(kwargs.get('output') or 'excel_transform_output.xlsx', make_dir=True)
+        source_paths = [get_path(x) for x in source]
+        mapping_path = get_path(mapping, make_dir=False)
+        output_path = get_path(output or 'excel_transform_output.xlsx', make_dir=True)
         source_dfs = OrderedDict()
         try:
             logger.info('processing mappings file')
@@ -177,8 +183,8 @@ def transform(ctx, **kwargs):
 
     except Exception as e:
         logger.critical(f'Encountered unexpected error:\n{e}')
-
-    logger.info(f'done processing in {humanfriendly.format_timespan(datetime.now() - s_time)}')
+    processing_time = humanfriendly.format_timespan(datetime.now() - s_time)
+    logger.info(f'done processing in {processing_time}')
 
 
 def get_dict_entry(iteration_index, identifier, iterable):
@@ -197,7 +203,7 @@ def get_dict_entry(iteration_index, identifier, iterable):
 def mapping_skeleton(**kwargs):
     """Generates a skeleton of the mapping file"""
     try:
-        out_path = get_path(kwargs.get('output') or 'mapping_skeleton.json', make_dir=True)
+        out_path = get_path(output or 'mapping_skeleton.json', make_dir=True)
 
         skeleton = {
             '__instructions__': {
@@ -259,6 +265,13 @@ def get_path(path, make_dir=True):
     if make_dir and not out_path.parent.exists():
         out_path.parent.mkdir(parents=True)
     return out_path
+
+
+@cli.command()
+def gui():
+    """Launches a PYQT5 gui"""
+    from excel_transform.gui import launch_gui
+    launch_gui()
 
 
 @cli.command()
