@@ -1,0 +1,50 @@
+{
+  "__instructions__": {
+    "1": "names starting with double underscore ('__') will be ignored",
+    "2": "fields enclosed with '<>' should be replaced completely",
+    "3": "use the underscore character ('_') to use system defaults",
+    "4": "use the asterisk character ('*') as a wildcard in the columns list to ensure all other columns are included. Note that when asterisk is used, column name and position will be default and all other column mappings will be ignored therefore the asterisk should only be used at the end of the mapping",
+    "5": "In the column mappings, use the following notation to exclude a column from the output: [-]"
+  },
+  "SpreadSheet1": [
+    {
+      "_": {
+        "dest_worksheet_name": "General",
+        "merge_columns": ["IP"],
+        "columns": [
+          ["Status", "_", "1"],
+          ["IPAddress", "IP","0"],
+          ["*", "_", "_"]
+        ]
+      },
+      "Sheet1": {
+        "dest_worksheet_name": "_",
+        "merge_columns": ["IPAddress"],
+        "columns": [
+          ["[-]IPOrdinal", "_", "_"],
+          ["*", "_", "_"]
+        ]
+      },
+      "Sheet2": {
+        "dest_worksheet_name": "Sheet1",
+        "merge_columns": ["IPAddress"],
+        "columns": [
+          ["Hostnames", "_", "_"]
+        ]
+      }
+    }
+  ],
+  "2": [
+    {
+      "Sheet1": {
+        "dest_worksheet_name": "General",
+        "merge_columns": ["IP"],
+        "columns": [
+          ["IP", "_","_"],
+          ["Site", "_", "2"],
+          ["DataType", "_", "_"]
+        ]
+      }
+    }
+  ]
+}
