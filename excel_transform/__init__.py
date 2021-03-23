@@ -10,7 +10,7 @@ import click
 import humanfriendly
 import pandas
 
-__version__ = '1.1.1'
+__version__ = '1.1.3'
 
 
 logger = logging.getLogger()
@@ -87,7 +87,6 @@ def process_mappings(source_df_dict, mappings):
 @click.argument('source', nargs=-1)
 @click.argument('mapping')
 @click.option('-o', '--output', help='relative or absolute path to output file')
-@click.option('--individual', help='performs processing on an individual file basis', is_flag=True)
 @click.pass_context
 def transform(ctx, **kwargs):
     transform_spreadsheets(**kwargs)
@@ -119,9 +118,9 @@ def transform_spreadsheets(source, mapping, output):
         count = -1
         processed_source = {}
         for identifier, mapping in mappings.items():
-            count += 1
             if '__' == identifier[:2]:
                 continue
+            count += 1
             entry = get_dict_entry(count, identifier, source_dfs)
             logger.info(f'processing mappings for: {entry.get("name")}')
             processed_source.update({entry.get('name'): process_mappings(entry.get("item"), mapping)})
@@ -205,6 +204,8 @@ def mapping_skeleton(**kwargs):
     """Generates a skeleton of the mapping file"""
     try:
         out_path = get_path(kwargs.get('output') or 'mapping_skeleton.json', make_dir=True)
+        if p.suffix != '.json':
+            out_path = pathlib.Path(f'{out_path.name.split(".")[0]}.json')
 
         skeleton = {
             '__instructions__': {
@@ -222,7 +223,7 @@ def mapping_skeleton(**kwargs):
                 {
                     '<worksheet 1 name> or _': {
                         'dest_worksheet_name': '<dest worksheet name> or _',
-                        'merge_columns': '[<name of reference columns for merging multiple spreadsheets>]',
+                        'merge_columns': ["<name of reference columns for merging multiple spreadsheets>"],
                         'columns': [
                             ['<column 1 name>', '<column 1 dest name> or _', '<column 1 dest position> or _'],
                             ['<column 2 name>', '<column 2 dest name> or _', '<column 2 dest position> or _']
