@@ -10,7 +10,7 @@ import click
 import humanfriendly
 import pandas
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 
 
 logger = logging.getLogger()
@@ -25,7 +25,8 @@ def cli(ctx, debug):
     """
     log_format = '%(asctime)s|%(levelname)s|%(name)s|(%(funcName)s):-%(message)s'
     logging.basicConfig(level=logging.DEBUG if debug else logging.INFO, stream=sys.stdout, format=log_format)
-    logger.info(f'{"-" * 20} Starting Logging for {ctx.invoked_subcommand} (v{__version__}) {"-" * 20}')
+    if ctx.invoked_subcommand not in ['version']:
+        logger.info(f'{"-" * 20} Starting Logging for {ctx.invoked_subcommand} (v{__version__}) {"-" * 20}')
 
 
 def process_column_mappings(source_df, column_mappings):
@@ -203,7 +204,7 @@ def get_dict_entry(iteration_index, identifier, iterable):
 def mapping_skeleton(**kwargs):
     """Generates a skeleton of the mapping file"""
     try:
-        out_path = get_path(output or 'mapping_skeleton.json', make_dir=True)
+        out_path = get_path(kwargs.get('output') or 'mapping_skeleton.json', make_dir=True)
 
         skeleton = {
             '__instructions__': {
