@@ -43,8 +43,8 @@ setup(
     entry_points={'console_scripts': [f'{project_name.replace("_", "-")} = {project_name}.__init__:cli']},
     classifiers=[
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.8"
+        "Programming Language :: Python :: 3.8",
+        "Operating System :: OS Independent"
     ],
-    platforms=['any'],
     python_requires='>=3.8'
 )
