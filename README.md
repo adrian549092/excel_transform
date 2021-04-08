@@ -1,5 +1,10 @@
 # excel-transform
 
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-388/)
+[![PyPI](https://img.shields.io/pypi/v/excel-transform.svg)](https://pypi.python.org/pypi/excel-transform)
+[![Downloads](https://pepy.tech/badge/excel-transform)](https://pepy.tech/project/excel-transform)
+![GitHub contributors](https://img.shields.io/github/contributors/adrian549092/excel-transform.svg)
+
 ### Installation
 Make sure you are using [python](https://www.python.org/downloads/) 3.8+.
 ```
@@ -33,7 +38,7 @@ Activate the virtual environment and install dependencies.
 
 Install from source via `github`
 ```
-(venv) λ pip install git+https://<USERNAME>:<TOKEN>@github.com/adrian549092/excel-transform.git@master
+(venv) λ pip install git+https://github.com/adrian549092/excel-transform.git@master
 ```
 
 ### Create template mapping file
@@ -46,6 +51,12 @@ Run this command to generate the skeleton of a mapping file
 Transform a spreadsheet
 ```
 (venv) λ excel-transform transform -o transformed.xlsx some_spreadsheet.xlsx mapping.json
+```
+
+### Transform GUI
+Launch available PYQT5 GUI
+```
+(venv) λ excel-transform gui
 ```
 
 ### Get Help
